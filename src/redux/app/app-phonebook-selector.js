@@ -9,12 +9,3 @@ export const getVisibleContacts = state => {
     name.toLowerCase().includes(optimizedFilter),
   );
 };
-
-//   const { filter } = state;
-//   const optimizedFilter = filter.toLowerCase();
-
-//   const vizibleCOntacts = state.contact.filter(contact =>
-//     contact.name.toLowerCase().includes(optimizedFilter),
-//   );
-
-//   return { contactsOll: vizibleCOntacts };

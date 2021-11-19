@@ -10,29 +10,27 @@ import {
   useDeleteContactsMutation,
 } from '../../redux/app/operation';
 
-function Todolist({ contact }) {
-  // const { data, isfetching } = useFetchContactQuery();
-  // const [deleteContacts, { isLoading: isDeleting }] =
-  //   useDeleteContactsMutation();
+function Todolist() {
+  const { data = [], isfetching } = useFetchContactQuery();
 
-  // const contactsOll = useSelector(getVisibleContacts);
-  // const dispatch = useDispatch();
-  // const onDeleteContact = id => dispatch(deleteContacts(id));
+  const contactsOll = useSelector(getVisibleContacts);
+  const dispatch = useDispatch();
+  const onDeleteContact = id => dispatch(deleteContacts(id));
 
   return (
     <ul className={s.contacts__list}>
-      {contact.map(({ id, name, phone, association }) => {
+      {contactsOll.map(({ id, name, number, association }) => {
         return (
           <li key={id} className={s.item}>
             {' '}
             <p className={s.name__contact}>
               Association: {association} | <span> name: {name} | </span>
-              <span>number: {phone} |</span>
+              <span>number: {number} |</span>
             </p>
             <button
               className={s.btn}
               type="button"
-              onClick={() => deleteContacts(id)}
+              onClick={() => onDeleteContact(id)}
             >
               {' '}
               DELETE contact

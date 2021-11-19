@@ -1,7 +1,15 @@
 import { createAction } from '@reduxjs/toolkit';
+// import { defaults } from 'gh-pages';
+
+// import { useState } from 'react';
 // import { v4 as uuid } from 'uuid';
 // const contactId = uuid();
 import shortid from 'shortid';
+// import {
+//   useFetchContactQuery,
+//   useAddContactsMutation,
+//   useDeleteContactsMutation,
+// } from '../../redux/app/operation';
 
 export const addContacts = createAction(
   'contacts/add',
@@ -14,20 +22,6 @@ export const addContacts = createAction(
     },
   }),
 );
+
 export const deleteContacts = createAction('contacts/delete');
 export const changeFilter = createAction('filter/value');
-
-// export const addContacts = contactLst => ({
-//   type: 'contacts/add',
-//   payload: contactLst,
-// });
-
-// export const deleteContacts = id => ({
-//   type: 'contacts/delete',
-//   payload: { id },
-// });
-
-// export const changeFilter = value => ({
-//   type: 'filter/value',
-//   payload: value,
-// });

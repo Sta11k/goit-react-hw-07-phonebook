@@ -41,10 +41,10 @@ export const store = configureStore({
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
       },
-      phonebookReducer.middleware,
-      contactsApi.middleware, //   ПЕРЕВІРИТИ ЧИ ВПЛИВАЄ НА ПЕРВІРКУ
-    ).concat(logger),
-
+      //   ПЕРЕВІРИТИ ЧИ ВПЛИВАЄ НА ПЕРВІРКУ
+    )
+      .concat(logger)
+      .concat(contactsApi.middleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
 
