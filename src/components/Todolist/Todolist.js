@@ -12,8 +12,8 @@ import {
 
 function Todolist({ contact }) {
   // const { data, isfetching } = useFetchContactQuery();
-  // const [deleteContacts, { isLoading: isDeleting }] =
-  //   useDeleteContactsMutation();
+  const [deleteContacts, { isLoading: isDeleting }] =
+    useDeleteContactsMutation();
 
   // const contactsOll = useSelector(getVisibleContacts);
   // const dispatch = useDispatch();

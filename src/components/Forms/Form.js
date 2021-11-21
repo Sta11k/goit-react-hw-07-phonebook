@@ -2,45 +2,21 @@
 // import { connect } from 'react-redux';
 import { useState } from 'react';
 import s from './Form.module.css';
-
+import { useAddContactsMutation } from '../../redux/app/operation';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContacts } from '../../redux/app/app-phonebook-actions';
 import { getContacts } from '../../redux/app/app-phonebook-selector';
 
-function Form() {
+function Form({ contact }) {
+  const [addContacts] = useAddContactsMutation();
   const contacts = useSelector(getContacts);
-  const dispatch = useDispatch();
-
-  const onSubmit = (name, number, association) =>
-    dispatch(addContacts(name, number, association));
+  // const dispatch = useDispatch();
+  // console.log(addContacts);
+  // const onSubmit = (name, number, association) =>
+  //   dispatch(addContacts(name, number, association));
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [association, setAssociation] = useState('Other');
-
-  // const contactCheck = () => {
-
-  //     const repeatName = contacts.reduce(
-  //     (acc, contact) => [...acc, contact.name],
-  //     [],
-  //   );
-  //   const repeatNumber = contacts.reduce(
-  //     (acc, contact) => [...acc, contact.number],
-  //     [],
-  //   );
-
-  //   if (repeatName.includes(name) || repeatNumber.includes(number)) {
-
-  //    alert(`${name} ${number} is already `);
-  //     return;
-  //   }
-
-  //   if (name === '' || number === '') {
-  //     alert(`Enter data`);
-  //     return;
-  //   }
-
-  // };
 
   const handleSabmit = e => {
     e.preventDefault();
@@ -62,8 +38,10 @@ function Form() {
       alert(`Enter data`);
       return;
     }
-
-    onSubmit(name, number, association);
+    let phone = number;
+    const newContact = { name, phone, association };
+    addContacts(newContact);
+    // onSubmit(name, number, association);
     setName('');
     setNumber('');
     setAssociation('Other');
